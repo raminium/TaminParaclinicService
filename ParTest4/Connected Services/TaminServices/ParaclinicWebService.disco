@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://darmanws.tamin.ir/ParaclinicWebService.asmx?wsdl" docRef="http://darmanws.tamin.ir/ParaclinicWebService.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://darmanws.tamin.ir/ParaclinicWebService.asmx" xmlns:q1="http://tempuri.org/" binding="q1:ParaclinicWebServiceSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://darmanws.tamin.ir/ParaclinicWebService.asmx" xmlns:q2="http://tempuri.org/" binding="q2:ParaclinicWebServiceSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

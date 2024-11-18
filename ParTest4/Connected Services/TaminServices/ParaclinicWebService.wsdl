@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Save_Diagnose_par">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ParaUInfo" type="tns:ParaUserInfo" />
+            <s:element minOccurs="1" maxOccurs="1" name="sRequestId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="Diagno" type="tns:Diagnose" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParaUserInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Diagnose">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsNormal" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiagnoseComment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocFani_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lstDiagnoseCode" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Save_Diagnose_parResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Save_Diagnose_parResult" type="tns:Result_Para" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Result_Para">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestId" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="RCode" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Save_Session_physio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ParaUInfo" type="tns:ParaUserInfo" />
+            <s:element minOccurs="1" maxOccurs="1" name="sRequestId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="sParList">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="sParListJson" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Save_Session_physioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Save_Session_physioResult" type="tns:Result_Para" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Save_Request">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ParaUInfo" type="tns:ParaUserInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocInfo" type="tns:DoctorInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="PrcInfo" type="tns:PrescInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="LabPrscInfo" type="tns:LabPrescInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="PhyPrscInfo" type="tns:PhysioPrescInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="PrescDInfo" type="tns:ArrayOfPrescDInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DoctorInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DOCID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DOC_SPEC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DOC_FNAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DOC_LNAME" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DOC_TYPE" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PrescInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BletSerial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PrescDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cust_Service_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bastari" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstDiagnoseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Is2K" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocFani_ID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LabPrescInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LabDiagnoseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LabDiagnoseComment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LabGrpCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PhysioPrescInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="TotalSession" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="OrganNo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhysioDiagnoseCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PhysioDiagnoseComment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DarmanPhysio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DarmanDoc" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPrescDInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PrescDInfo" nillable="true" type="tns:PrescDInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PrescDInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TAREFCODE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Num" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="note_details_eprsc_id" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="Item_Price" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Save_RequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Save_RequestResult" type="tns:Result_Para" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Save_Request_Eprsc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ParaUInfo" type="tns:ParaUserInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="EPrcInfo" type="tns:EPrescInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="LabPrscInfo" type="tns:LabPrescInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="PhyPrscInfo" type="tns:PhysioPrescInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="PrescDInfo" type="tns:ArrayOfPrescDInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="logMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EPrescInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cust_Service_type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Is2K" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocFani_ID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="note_head_eprsc_id" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Save_Request_EprscResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Save_Request_EprscResult" type="tns:Result_Para" />
+            <s:element minOccurs="0" maxOccurs="1" name="logMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Request_Eprsc">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ParaUInfo" type="tns:ParaUserInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="EPrcInfo" type="tns:EPrescInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Delete_Request_EprscResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Delete_Request_EprscResult" type="tns:Result_Para" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Save_Diagnose_parSoapIn">
+    <wsdl:part name="parameters" element="tns:Save_Diagnose_par" />
+  </wsdl:message>
+  <wsdl:message name="Save_Diagnose_parSoapOut">
+    <wsdl:part name="parameters" element="tns:Save_Diagnose_parResponse" />
+  </wsdl:message>
+  <wsdl:message name="Save_Session_physioSoapIn">
+    <wsdl:part name="parameters" element="tns:Save_Session_physio" />
+  </wsdl:message>
+  <wsdl:message name="Save_Session_physioSoapOut">
+    <wsdl:part name="parameters" element="tns:Save_Session_physioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Save_RequestSoapIn">
+    <wsdl:part name="parameters" element="tns:Save_Request" />
+  </wsdl:message>
+  <wsdl:message name="Save_RequestSoapOut">
+    <wsdl:part name="parameters" element="tns:Save_RequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="Save_Request_EprscSoapIn">
+    <wsdl:part name="parameters" element="tns:Save_Request_Eprsc" />
+  </wsdl:message>
+  <wsdl:message name="Save_Request_EprscSoapOut">
+    <wsdl:part name="parameters" element="tns:Save_Request_EprscResponse" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Request_EprscSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete_Request_Eprsc" />
+  </wsdl:message>
+  <wsdl:message name="Delete_Request_EprscSoapOut">
+    <wsdl:part name="parameters" element="tns:Delete_Request_EprscResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ParaclinicWebServiceSoap">
+    <wsdl:operation name="Save_Diagnose_par">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Apply Par Note Save Diagnose</wsdl:documentation>
+      <wsdl:input message="tns:Save_Diagnose_parSoapIn" />
+      <wsdl:output message="tns:Save_Diagnose_parSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Save_Session_physio">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Apply Par Note Save Session</wsdl:documentation>
+      <wsdl:input message="tns:Save_Session_physioSoapIn" />
+      <wsdl:output message="tns:Save_Session_physioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Save_Request">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Apply Par Note Save Request</wsdl:documentation>
+      <wsdl:input message="tns:Save_RequestSoapIn" />
+      <wsdl:output message="tns:Save_RequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Save_Request_Eprsc">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Apply Par Note Epresc Save Request</wsdl:documentation>
+      <wsdl:input message="tns:Save_Request_EprscSoapIn" />
+      <wsdl:output message="tns:Save_Request_EprscSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Request_Eprsc">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Delete Par Note Epresc</wsdl:documentation>
+      <wsdl:input message="tns:Delete_Request_EprscSoapIn" />
+      <wsdl:output message="tns:Delete_Request_EprscSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ParaclinicWebServiceSoap" type="tns:ParaclinicWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Save_Diagnose_par">
+      <soap:operation soapAction="http://tempuri.org/Save_Diagnose_par" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save_Session_physio">
+      <soap:operation soapAction="http://tempuri.org/Save_Session_physio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save_Request">
+      <soap:operation soapAction="http://tempuri.org/Save_Request" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save_Request_Eprsc">
+      <soap:operation soapAction="http://tempuri.org/Save_Request_Eprsc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Request_Eprsc">
+      <soap:operation soapAction="http://tempuri.org/Delete_Request_Eprsc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ParaclinicWebServiceSoap12" type="tns:ParaclinicWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Save_Diagnose_par">
+      <soap12:operation soapAction="http://tempuri.org/Save_Diagnose_par" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save_Session_physio">
+      <soap12:operation soapAction="http://tempuri.org/Save_Session_physio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save_Request">
+      <soap12:operation soapAction="http://tempuri.org/Save_Request" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Save_Request_Eprsc">
+      <soap12:operation soapAction="http://tempuri.org/Save_Request_Eprsc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete_Request_Eprsc">
+      <soap12:operation soapAction="http://tempuri.org/Delete_Request_Eprsc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ParaclinicWebService">
+    <wsdl:port name="ParaclinicWebServiceSoap" binding="tns:ParaclinicWebServiceSoap">
+      <soap:address location="http://darmanws.tamin.ir/ParaclinicWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ParaclinicWebServiceSoap12" binding="tns:ParaclinicWebServiceSoap12">
+      <soap12:address location="http://darmanws.tamin.ir/ParaclinicWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
